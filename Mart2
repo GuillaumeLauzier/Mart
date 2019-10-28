@@ -1,0 +1,186 @@
+class Article {
+    var nom: String
+    var prixAchat: UInt
+    var prixVente: UInt
+
+
+init(nom: String, prixAchat: UInt, prixVente: UInt) {
+    self.nom = nom
+    self.prixAchat = prixAchat
+    self.prixVente = prixVente
+  }
+}
+
+
+class Perissable: Article {
+    var dateValidee: String
+    var dateExpiration: String
+    
+    init(nom: String, prixAchat: UInt, prixVente: UInt, dateValidee: String, dateExpiration: String) {
+        super.init(nom: nom, prixAchat: prixAchat, prixVente: prixVente)
+        self.dateValidee = dateValidee
+        self.dateExpiration = dateExpiration
+    }
+}
+
+
+class NonPerissable: Article {
+    var taillesEuro: Int
+    var taillesUS: String
+    
+    init (nom: String, prixAchat: UInt, prixVente: UInt, taillesEuro: Int, taillesUS: String){
+        super.init(nom: nom, prixAchat: prixAchat, prixVente: prixVente)
+        self.taillesEuro = taillesEuro
+        self.taillesUS = taillesUS
+    }
+    
+}
+    
+
+class Legumes: Perissable {
+    var paysDorigine: String
+    var bio: Bool
+    
+    init(nom: String, prixAchat: UInt, prixVente: UInt, dateValidee: String, dateExpiration: String, paysDorigine: String, bio: Bool){
+    super.init(nom: nom, prixAchat: prixAchat, prixVente: prixVente, dateValidee: dateValidee, dateExpiration: dateExpiration)
+    self.paysDorigine = paysDorigine
+    self.bio = bio
+        
+    }
+}
+
+
+class Fruit: Perissable {
+    var paysDorigine: String
+    var bio: Bool
+    
+    init(nom: String, prixAchat: UInt, prixVente: UInt, dateValidee: String, dateExpiration: String, paysDorigine: String, bio: Bool) {
+        super.init(nom: nom, prixAchat: prixAchat, prixVente: prixVente, dateValidee: dateValidee, dateExpiration: dateExpiration)
+        self.paysDorigine = paysDorigine
+        self.bio = bio
+        
+    }
+    
+    
+}
+
+
+class Vetement: NonPerissable {
+    var matiere: String
+    var paysProduit: String
+}
+
+class ElectroMenager: NonPerissable {
+    var garantie
+    
+    init(nom: String, prixAchat: UInt, prixVente: UInt, ) {
+        super.init(nom: nom, prixAchat: prixAchat, prixVente: prixVente,
+}
+
+
+
+    class Article {
+        private(set) var products = [Category : [Product]]()
+        
+        func add(_ product: Product) {
+            if var productsInCategory = products[product.category] {
+                productsInCategory.append(product)
+                products[product.category] = productsInCategory
+            } else {
+                products[product.category] = [product]
+            }
+            
+            func vendre () {
+                print ("Vente  de \(nom) au prix de \())
+            }
+        }
+    }
+    
+    let Article: [Category : [Product]] = [
+        .perissable: [
+            Product(name: "Milk", category: .dairy),
+            Product(name: "Butter", category: .dairy)
+        ],
+        .nonperissable: [
+            Product(name: "Cucumber", category: .vegetables),
+            Product(name: "Lettuce", category: .vegetables)
+        ]
+    ]
+    
+    class Perissable: Article {
+        let dureeConservation: UInt8 = 15
+        
+    }
+    
+    class Alimentaire: Perissable {
+        
+    }
+    
+    enum Saison {
+        case ete, hiver, automne, printemps
+    }
+    
+    class Fruit: Alimentaire {
+        var saison: Saison = Saison.ete
+        override init (nom: String, prixAchat: Float, prixVente: Float) {
+            super.init(nom:nom, prixAchat: prixAchat, prixVente: prixVente)
+        }
+        
+        convenience init(nom: String, prixAchat: Float, marge: Float) {
+            self.init(nom: nom, prixAchat: prixAchat, prixVente: prixVente * (100 + marge) / 100)
+            
+        }
+        
+        convenience init(nom: String, prixVente: Float, marge: Float) {
+            self.init(nom: nom, prixAchat: prixAchat, prixVente: prixAchat * (100 + marge) /)
+            
+}
+
+/* Will give an error
+ convenience init(nom: String, prixVente: Float, marge: Float) {
+ super.init(nom: nom, prixAchat: prixVente - ((prixVente * marge)/100), prixVente: prixVente)
+ 
+ }
+ */
+
+
+/*
+ var orange = Fruit (nom: "Orange Sanguines", prixAchat: 2.23, marge: 50)
+ var vesteCuir = Fruit (nom: "Veste en Cuir", prixVente: 520, marge: 30)
+ var montreSwatch = Fruit (nom: "Montre Swatch", prixVente: 120)
+ let frigo = Electromenager(nom: "Samsung", prixAchat: 499, prixVente 1299)
+ let basketConverse = Electromenager(nom: "Nike", prixAchat: 32, prixVente: 89)
+ let haricot = Legume(nom: "Haricot", prixAchat: 1.30, prixVente: 2.5)
+ 
+ print (orange.prixVente)
+ print (vesteCuir.prixAchat)
+ print (montreSwatch.prixAchat)
+ 
+ var mesArticles = [Article]()
+ mesArticles.append()
+ mesArticles.append()
+ mesArticles.append()
+ mesArticles.append()
+ mesArticles.append()
+ mesArticles.append()
+ 
+ for article in mesArticles {
+ article.vendre()
+ }
+ */
+
+
+/*
+ //Array with dummy names
+ var nameArray = ["Red","Raain","Rozi","Rozina","Rozinava", "Roy","Roy son","Rediss","Raj","Blue", "Yellow"]
+ 
+ //Get name from the Doctor object
+ var name = doctor.firstname
+ name = ((name ?? "").isEmpty ? "" : name!)//if string is empty return default value
+ print("name is \(name)")
+ 
+ //append to array
+ self.nameArray.append(name!)
+ 
+ print("names are \(nameArray)")
+ */
